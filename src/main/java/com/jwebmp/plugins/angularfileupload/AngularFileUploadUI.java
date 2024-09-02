@@ -30,7 +30,7 @@ public class AngularFileUploadUI extends DivSimple<AngularFileUploadUI>
     }
 
     @Override
-    public void init()
+    protected void init()
     {
         add(uploadButton);
         uploadButton.addAttribute("(click)", "fileUpload" + fileUploadId + ".click()");

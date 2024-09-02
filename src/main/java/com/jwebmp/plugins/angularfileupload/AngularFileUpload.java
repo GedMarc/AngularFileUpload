@@ -12,6 +12,8 @@ import com.jwebmp.core.base.angular.client.services.interfaces.INgComponent;
 import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.core.base.html.inputs.InputFileType;
 
+import java.util.Set;
+
 @NgComponent("angular-file-upload")
 @NgField("fileName = '';")
 @NgMethod("""
@@ -69,8 +71,21 @@ import com.jwebmp.core.base.html.inputs.InputFileType;
 //@NgConstructorParameter("private routeLocation: Location")
 @NgConstructorParameter("private router: Router")
 @NgConstructorParameter("private route: ActivatedRoute")
+@NgImportReference(value = "FormsModule", reference = "@angular/forms")
+
+
 public class AngularFileUpload extends DivSimple<AngularFileUpload> implements INgComponent<AngularFileUpload>
 {
+
+    @Override
+    public Set<String> moduleImports()
+    {
+        var s = INgComponent.super.moduleImports();
+        s.add("FormsModule");
+        return s;
+    }
+
+
     private InputFileType<?> fileInput;
     private AngularFileUploadUI ui;
 
@@ -86,18 +101,20 @@ public class AngularFileUpload extends DivSimple<AngularFileUpload> implements I
         fileInput.addStyle("display", "none");
         fileInput.setID(id);
         fileInput.addAttribute("(change)", "onFileSelected($event)");
+        fileInput.getProperties()
+                 .put("noName", "true");
         ui = new AngularFileUploadUI(id);
     }
 
     @Override
-    public void init()
+    protected void init()
     {
         super.init();
         if (fileInput != null)
         {
             add(fileInput);
             fileInput.addAttribute("#fileUpload" + fileInput.getID(), "");
-            fileInput.removeAttribute("#id");
+            fileInput.removeAttribute("#" + getID());
         }
         if (ui != null)
         {
