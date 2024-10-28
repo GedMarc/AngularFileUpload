@@ -9,7 +9,7 @@ module com.jwebmp.angular.fileupload {
 
     requires com.jwebmp.core.angular;
     requires guiced.vertx;
-    requires io.vertx;
+    requires io.vertx.core;
     requires com.jwebmp.core;
     requires static lombok;
     requires org.apache.commons.io;
