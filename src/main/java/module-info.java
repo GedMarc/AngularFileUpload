@@ -8,7 +8,7 @@ module com.jwebmp.angular.fileupload {
     exports com.jwebmp.plugins.angularfileupload;
 
     requires com.jwebmp.core.angular;
-    requires guiced.vertx;
+    requires com.guicedee.vertx;
     requires io.vertx.core;
     requires com.jwebmp.core;
     requires static lombok;
