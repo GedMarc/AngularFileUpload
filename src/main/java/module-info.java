@@ -1,5 +1,5 @@
 import com.guicedee.guicedinjection.interfaces.IGuiceScanModuleInclusions;
-import com.guicedee.vertx.spi.VertxRouterConfigurator;
+import com.guicedee.vertx.web.spi.VertxRouterConfigurator;
 import com.jwebmp.plugins.angularfileupload.implementations.AngularFileUploadRouterConfiguration;
 import com.jwebmp.plugins.angularfileupload.implementations.AngularFileUploadScanModule;
 
@@ -8,7 +8,7 @@ module com.jwebmp.angular.fileupload {
     exports com.jwebmp.plugins.angularfileupload;
 
     requires com.jwebmp.core.angular;
-    requires com.guicedee.vertx;
+    requires com.guicedee.vertx.web;
     requires io.vertx.core;
     requires com.jwebmp.core;
     requires static lombok;
