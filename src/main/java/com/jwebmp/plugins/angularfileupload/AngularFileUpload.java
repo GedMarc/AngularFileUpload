@@ -5,6 +5,7 @@ import com.jwebmp.core.base.angular.client.annotations.boot.NgBootImportProvider
 import com.jwebmp.core.base.angular.client.annotations.boot.NgBootImportReference;
 import com.jwebmp.core.base.angular.client.annotations.components.NgInput;
 import com.jwebmp.core.base.angular.client.annotations.constructors.NgConstructorParameter;
+import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.annotations.structures.NgField;
 import com.jwebmp.core.base.angular.client.annotations.structures.NgMethod;
@@ -72,20 +73,10 @@ import java.util.Set;
 @NgConstructorParameter("private router: Router")
 @NgConstructorParameter("private route: ActivatedRoute")
 @NgImportReference(value = "FormsModule", reference = "@angular/forms")
-
+@NgImportModule("FormsModule")
 
 public class AngularFileUpload extends DivSimple<AngularFileUpload> implements INgComponent<AngularFileUpload>
 {
-
-    @Override
-    public Set<String> moduleImports()
-    {
-        var s = INgComponent.super.moduleImports();
-        s.add("FormsModule");
-        return s;
-    }
-
-
     private InputFileType<?> fileInput;
     private AngularFileUploadUI ui;
 
@@ -102,7 +93,7 @@ public class AngularFileUpload extends DivSimple<AngularFileUpload> implements I
         fileInput.setID(id);
         fileInput.addAttribute("(change)", "onFileSelected($event)");
         fileInput.getProperties()
-                 .put("noName", "true");
+                .put("noName", "true");
         ui = new AngularFileUploadUI(id);
     }
 
