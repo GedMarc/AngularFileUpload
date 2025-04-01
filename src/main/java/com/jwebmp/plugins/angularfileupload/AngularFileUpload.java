@@ -39,8 +39,8 @@ import java.util.Set;
 @NgMethod("""
               send(data: FormData): void {
                                  data.append('action','FileUpload');
-                                 data.append('interceptorName',this.interceptorName);
-                                 data.append('id',this.id);
+                                 data.append('interceptorName',this.interceptorName());
+                                 data.append('id',this.id());
                                  data.append('url',JSON.stringify(window.location));
                                  data.append('localStorage',JSON.stringify(window.localStorage));
                                  data.append('sessionStorage',JSON.stringify(window.sessionStorage));
@@ -67,7 +67,9 @@ import java.util.Set;
         "    }\n" +
         "}\n")
 //@NgImportReference(value = "Location", reference = "@angular/common")
-@NgImportReference(value = "RouterModule, ParamMap,Router", reference = "@angular/router")
+@NgImportReference(value = "RouterModule", reference = "@angular/router")
+@NgImportReference(value = "ParamMap", reference = "@angular/router")
+@NgImportReference(value = "Router", reference = "@angular/router")
 @NgImportReference(value = "ActivatedRoute", reference = "@angular/router")
 //@NgConstructorParameter("private routeLocation: Location")
 @NgConstructorParameter("private router: Router")
